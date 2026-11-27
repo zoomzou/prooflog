@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProofLog — Local-Only Cryptographic Evidence Vault for iPhone &amp; iPad</title>
+  <meta name="description" content="ProofLog is a zero-server forensic evidence journal for iPhone and iPad with AES-256-GCM encryption, RFC 3161 trusted timestamps, and court-ready PDF exports.">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get("lang");
+      var saved = null;
+      try { saved = localStorage.getItem("prooflog_doc_lang"); } catch (e) {}
+      var mode = (q === "fr" || q === "en") ? q : (saved === "fr" ? "fr" : "en");
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html">
+        <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="9" fill="#1B365D"/>
+          <path d="M18 7L27 10.6V17.4C27 23.1 23.2 27.9 18 29.5C12.8 27.9 9 23.1 9 17.4V10.6L18 7Z" stroke="#FFFFFF" stroke-width="1.8"/>
+          <path d="M14.2 18.2L16.9 20.9L22.2 15.2" stroke="#4ADE80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ProofLog</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="./index.html" aria-current="page">
+            <span data-lang="en">Overview</span>
+            <span data-lang="fr">Aperçu</span>
+          </a>
+          <a href="./privacy.html">
+            <span data-lang="en">Privacy Policy</span>
+            <span data-lang="fr">Confidentialité</span>
+          </a>
+          <a href="./support.html">
+            <span data-lang="en">Support</span>
+            <span data-lang="fr">Assistance</span>
+          </a>
+          <a href="./terms.html">
+            <span data-lang="en">Terms</span>
+            <span data-lang="fr">Conditions</span>
+          </a>
+        </nav>
+
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" id="btn-lang-en" onclick="setLang('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-lang-fr" onclick="setLang('fr')">FR (CA)</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero-card">
+      <div class="eyebrow">
+        <span data-lang="en">Zero-Server · Local-Only · iPhone &amp; iPad</span>
+        <span data-lang="fr">Zéro serveur · Local uniquement · iPhone et iPad</span>
+      </div>
+
+      <h1 data-lang="en">ProofLog — Cryptographic Evidence Vault</h1>
+      <h1 data-lang="fr">ProofLog — Coffre-fort cryptographique de preuves</h1>
+
+      <p class="lead" data-lang="en">
+        Log contemporaneous notes, photos, voice memos, and imported records strictly on your iPhone or iPad—encrypted with AES-256-GCM, hash-chained with SHA-256 &amp; SHA-512, signed on-device, and anchored with independent RFC 3161 timestamps.
+      </p>
+      <p class="lead" data-lang="fr">
+        Consignez vos notes contemporaines, photos, mémos vocaux et pièces importées exclusivement sur votre iPhone ou iPad — chiffrés avec AES-256-GCM, chaînés par hachage SHA-256 et SHA-512, signés sur l'appareil et ancrés par horodatage RFC 3161 indépendant.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="./support.html">
+          <span data-lang="en">Technical Support &amp; FAQ</span>
+          <span data-lang="fr">Soutien technique et FAQ</span>
+        </a>
+        <a class="btn-secondary" href="./privacy.html">
+          <span data-lang="en">Privacy Policy</span>
+          <span data-lang="fr">Politique de confidentialité</span>
+        </a>
+        <a class="btn-secondary" href="./terms.html">
+          <span data-lang="en">Terms &amp; Subscriptions</span>
+          <span data-lang="fr">Conditions et abonnements</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="card-grid" data-lang="en">
+      <article class="card">
+        <h2>Zero Cloud, Zero Tracking</h2>
+        <p>ProofLog operates with no user accounts, no cloud database, and no third-party analytics SDKs. Encryption keys stay inside your device's Apple Keychain and can be gated behind Face ID or Touch ID.</p>
+      </article>
+      <article class="card">
+        <h2>Tamper-Evident Sealing</h2>
+        <p>Every entry is append-only (v8 seal format), hash-chained to prior entries, signed with Secure Enclave / P-256 keys, and optionally timestamped by DigiCert, FreeTSA, or Sectigo via hash-only HTTPS.</p>
+      </article>
+      <article class="card">
+        <h2>Court-Ready Exports (Pro)</h2>
+        <p>Preview formatted Affidavit PDFs free inside the app. Upgrade to ProofLog Pro to export unwatermarked Court PDFs (Chronological Index, Page X of Y, Bates numbering), Self-Verifying ZIP bags, and CSV logs.</p>
+      </article>
+    </div>
+
+    <div class="card-grid" data-lang="fr">
+      <article class="card">
+        <h2>Aucun nuage, aucun pistage</h2>
+        <p>ProofLog fonctionne sans compte utilisateur, sans base de données infonuagique et sans SDK d'analyse tiers. Vos clés de chiffrement demeurent dans le Trousseau Apple et peuvent être protégées par Face ID ou Touch ID.</p>
+      </article>
+      <article class="card">
+        <h2>Scellement inviolable</h2>
+        <p>Chaque entrée est ajoutée en mode ajout uniquement (format v8), chaînée par hachage, signée avec Secure Enclave / P-256 et ancrée par DigiCert, FreeTSA ou Sectigo via des requêtes HTTPS ne transmettant que le condensat.</p>
+      </article>
+      <article class="card">
+        <h2>Exports prêts pour la cour (Pro)</h2>
+        <p>Prévisualisez gratuitement vos PDF de cour avec filigrane. Passez à ProofLog Pro pour exporter des PDF sans filigrane (index chronologique, Page X sur Y, numérotation Bates), des archives ZIP auto-vérifiables et des fichiers CSV.</p>
+      </article>
+    </div>
+
+    <section class="doc-section" data-lang="en">
+      <h2>Essential App Store Links</h2>
+      <ul>
+        <li><strong>Privacy Policy:</strong> <a href="./privacy.html">View ProofLog Privacy Policy</a></li>
+        <li><strong>Support &amp; User Guide:</strong> <a href="./support.html">View Technical Support &amp; FAQ</a></li>
+        <li><strong>Terms of Use &amp; Auto-Renewable Subscriptions:</strong> <a href="./terms.html">View Terms of Use</a> and <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Apple Standard EULA</a></li>
+      </ul>
+      <div class="callout callout-navy">
+        <strong>Notice:</strong> ProofLog is a local evidence logging and cryptographic sealing tool. It does not provide legal advice. Court admissibility depends on your jurisdiction and local rules of evidence.
+      </div>
+    </section>
+
+    <section class="doc-section" data-lang="fr">
+      <h2>Liens essentiels</h2>
+      <ul>
+        <li><strong>Politique de confidentialité :</strong> <a href="./privacy.html">Consulter la politique de confidentialité</a></li>
+        <li><strong>Soutien technique et guide :</strong> <a href="./support.html">Consulter l'aide et la FAQ</a></li>
+        <li><strong>Conditions d'utilisation et abonnements :</strong> <a href="./terms.html">Consulter les conditions</a> et le <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">CLUF standard d'Apple</a></li>
+      </ul>
+      <div class="callout callout-navy">
+        <strong>Avis :</strong> ProofLog est un outil local de journalisation et de scellement cryptographique de preuves. Il ne fournit pas de conseils juridiques. La recevabilité devant un tribunal dépend de votre juridiction et des règles de preuve applicables.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>
+        <span data-lang="en">&copy; 2026 ProofLog · Version 1.0.0 · Local-Only Forensic Vault</span>
+        <span data-lang="fr">&copy; 2026 ProofLog · Version 1.0.0 · Coffre médico-légal local</span>
+      </span>
+      <div class="footer-links">
+        <a href="./privacy.html">
+          <span data-lang="en">Privacy Policy</span>
+          <span data-lang="fr">Confidentialité</span>
+        </a>
+        <a href="./support.html">
+          <span data-lang="en">Support</span>
+          <span data-lang="fr">Assistance</span>
+        </a>
+        <a href="./terms.html">
+          <span data-lang="en">Terms</span>
+          <span data-lang="fr">Conditions</span>
+        </a>
+        <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">GitHub Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function syncButtons(mode) {
+      document.getElementById("btn-lang-en").classList.toggle("active", mode === "en");
+      document.getElementById("btn-lang-fr").classList.toggle("active", mode === "fr");
+    }
+    function setLang(mode) {
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+      try { localStorage.setItem("prooflog_doc_lang", mode); } catch (e) {}
+      syncButtons(mode);
+    }
+    syncButtons(document.documentElement.getAttribute("data-lang-mode") || "en");
+  </script>
+</body>
+</html>

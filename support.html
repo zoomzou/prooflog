@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Technical Support &amp; FAQ — ProofLog</title>
+  <meta name="description" content="ProofLog Support, FAQ, encrypted .plbackup recovery instructions, offline ZIP verification guide, and ProofLog Pro subscription management.">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get("lang");
+      var saved = null;
+      try { saved = localStorage.getItem("prooflog_doc_lang"); } catch (e) {}
+      var mode = (q === "fr" || q === "en") ? q : (saved === "fr" ? "fr" : "en");
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html">
+        <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="9" fill="#1B365D"/>
+          <path d="M18 7L27 10.6V17.4C27 23.1 23.2 27.9 18 29.5C12.8 27.9 9 23.1 9 17.4V10.6L18 7Z" stroke="#FFFFFF" stroke-width="1.8"/>
+          <path d="M14.2 18.2L16.9 20.9L22.2 15.2" stroke="#4ADE80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ProofLog</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="./index.html">
+            <span data-lang="en">Overview</span>
+            <span data-lang="fr">Aperçu</span>
+          </a>
+          <a href="./privacy.html">
+            <span data-lang="en">Privacy Policy</span>
+            <span data-lang="fr">Confidentialité</span>
+          </a>
+          <a href="./support.html" aria-current="page">
+            <span data-lang="en">Support</span>
+            <span data-lang="fr">Assistance</span>
+          </a>
+          <a href="./terms.html">
+            <span data-lang="en">Terms</span>
+            <span data-lang="fr">Conditions</span>
+          </a>
+        </nav>
+
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" id="btn-lang-en" onclick="setLang('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-lang-fr" onclick="setLang('fr')">FR (CA)</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero-card">
+      <div class="eyebrow">
+        <span data-lang="en">iPhone &amp; iPad Support · Version 1.0.0</span>
+        <span data-lang="fr">Soutien iPhone et iPad · Version 1.0.0</span>
+      </div>
+      <h1 data-lang="en">ProofLog Technical Support</h1>
+      <h1 data-lang="fr">Soutien technique ProofLog</h1>
+      <p class="lead" data-lang="en">
+        Guides for sealing contemporaneous records, exporting court-ready bundles, restoring encrypted <code>.plbackup</code> archives, and managing your ProofLog Pro subscription.
+      </p>
+      <p class="lead" data-lang="fr">
+        Guides pour sceller vos entrées contemporaines, exporter des dossiers prêts pour la cour, restaurer vos archives chiffrées <code>.plbackup</code> et gérer votre abonnement ProofLog Pro.
+      </p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">
+          <span data-lang="en">Report a Bug or Ask a Question</span>
+          <span data-lang="fr">Signaler un bogue ou poser une question</span>
+        </a>
+        <a class="btn-secondary" href="./privacy.html">
+          <span data-lang="en">Read Privacy Policy</span>
+          <span data-lang="fr">Lire la politique de confidentialité</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ENGLISH SUPPORT -->
+    <div data-lang="en">
+      <section class="doc-section">
+        <h2>Getting Started: Free vs. ProofLog Pro</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>ProofLog Free</th>
+                <th>ProofLog Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Local Vault Logging &amp; Amendments</strong></td>
+                <td>Unlimited entries, photos, voice memos &amp; append-only amendments with AES-256-GCM + SHA-256/512 + Secure Enclave signatures</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td><strong>Live RFC 3161 Timestamps (DigiCert / FreeTSA / Sectigo)</strong></td>
+                <td>First <strong>5</strong> sealed entries live; #6+ seal locally and queue <code>pending-tsa</code></td>
+                <td>Unlimited live timestamps + automatic catchup for all queued <code>pending-tsa</code> entries</td>
+              </tr>
+              <tr>
+                <td><strong>Court PDF</strong></td>
+                <td>Watermarked in-app QuickLook preview</td>
+                <td>Clean, unwatermarked Affidavit Court PDFs (Chronological Index, <code>Page X of Y</code> &amp; Bates stamps)</td>
+              </tr>
+              <tr>
+                <td><strong>Verification ZIP &amp; CSV Exports</strong></td>
+                <td>Pro required</td>
+                <td>Self-Verifying ZIP (originals, <code>.tsr</code> tokens, CA PEMs, redaction, offline <code>verify.html</code> &amp; <code>verify.py</code>) + CSV</td>
+              </tr>
+              <tr>
+                <td><strong>Bulk History Import &amp; OCR</strong></td>
+                <td>Pro required</td>
+                <td>Import emails, CSV, XLSX spreadsheets, PDFs, and multi-screenshot chat threads</td>
+              </tr>
+              <tr>
+                <td><strong>Encrypted <code>.plbackup</code> Backup &amp; Restore</strong></td>
+                <td>Free forever</td>
+                <td>Free forever</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <details class="faq-item" open>
+          <summary>What does "pending-tsa" mean and how do timestamps catch up?</summary>
+          <div class="faq-body">
+            When an entry is created offline, without reachable timestamp servers, or after you have used your 5 free live RFC 3161 timestamps, ProofLog still seals the entry immediately with its full local v8 SHA-256/SHA-512 hash chain and hardware signature, and marks it <code>pending-tsa</code> to preserve sequence order. Upgrading to ProofLog Pro—or pulling down to refresh the Timeline when online—automatically anchors pending entries with a trusted post-seal timestamp.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How can an attorney or court verify an exported Verification ZIP offline?</summary>
+          <div class="faq-body">
+            Every exported Verification ZIP is completely self-contained. Unzip the folder on macOS, Windows, or Linux and open the included <code>verify.html</code> in any modern web browser, or run <code>python3 verify.py</code> from Terminal. Both tools re-compute every SHA-256/SHA-512 hash, check chain continuity, verify hardware signatures, and inspect the bundled RFC 3161 <code>.tsr</code> tokens and CA PEM certificates without requiring the ProofLog app or an internet connection.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I back up or transfer my vault to a new iPhone or iPad?</summary>
+          <div class="faq-body">
+            ProofLog does not sync evidence to any cloud server or iCloud Device Backup. To move or back up your vault, go to <strong>Settings &rarr; Open Encrypted Backup &amp; Restore</strong>, choose a strong passphrase, and save the exported <code>.plbackup</code> file to a secure location (such as Files, an encrypted USB drive, or your personal cloud drive). On your new device, open ProofLog &rarr; <strong>Settings &rarr; Open Encrypted Backup &amp; Restore</strong> (or tap <strong>Restore Encrypted .plbackup</strong> during onboarding) and enter your passphrase.
+            <br><br>
+            <strong>Important:</strong> Because ProofLog has zero access to your passphrase or keys, a forgotten <code>.plbackup</code> passphrase cannot be reset or recovered.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the Face ID / Touch ID Vault Key Gate work?</summary>
+          <div class="faq-body">
+            When <strong>Gate Vault Key with Face ID / Touch ID</strong> is enabled in Settings, ProofLog locks your local Keychain AES-256 master key behind iOS user-presence authentication and clears the key from memory whenever the app leaves the foreground (also displaying a privacy curtain in the App Switcher). You can also enable the <strong>Discreet Home Screen Icon</strong> in Settings to switch the app icon to a neutral notepad badge.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I restore purchases, cancel a subscription, or request a refund?</summary>
+          <div class="faq-body">
+            <ul>
+              <li><strong>Restore Purchases:</strong> Open ProofLog &rarr; <strong>Settings</strong> (or the Upgrade sheet) &rarr; tap <strong>Restore Purchases</strong> using the same Apple ID.</li>
+              <li><strong>Manage or Cancel:</strong> Tap <strong>Settings &rarr; Manage Subscription</strong> inside ProofLog, or open iOS <strong>Settings &rarr; [Your Name] &rarr; Subscriptions</strong>. Cancel at least 24 hours before the renewal date to avoid the next billing cycle.</li>
+              <li><strong>Refunds:</strong> All App Store billing and refunds are handled directly by Apple at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will ProofLog delete my existing records if I cancel ProofLog Pro?</summary>
+          <div class="faq-body">
+            No. You keep full local access to every sealed entry, photo, voice memo, watermarked PDF preview, and free encrypted <code>.plbackup</code> backup forever. Canceling Pro only disables new Pro exports, bulk imports, and additional live RFC 3161 timestamps beyond the free allowance.
+          </div>
+        </details>
+      </section>
+
+      <section class="doc-section">
+        <h2>Contact Support &amp; Bug Reports</h2>
+        <p>For technical support or bug reports, open an issue on our public support tracker: <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">github.com/zoomzou/prooflog/issues</a>.</p>
+        <p>Please include:</p>
+        <ul>
+          <li>Your device model (e.g., iPhone 16 Pro, iPad Air) and iOS / iPadOS version</li>
+          <li>Your ProofLog version (found in App Store / iOS Settings; current release <code>1.0.0</code>)</li>
+          <li>Clear steps to reproduce the issue and any visible status message</li>
+        </ul>
+        <div class="callout callout-amber">
+          <strong>Privacy Warning:</strong> Issues posted on GitHub are publicly visible. Never upload real evidence logs, personal names, case numbers, screenshots containing private messages, or <code>.plbackup</code> files to GitHub Issues.
+        </div>
+        <p class="lead" style="font-size:0.9rem;margin-top:14px;">
+          <strong>Legal Notice:</strong> ProofLog is a local evidence logging and cryptographic sealing tool. It does not provide legal advice. Court admissibility depends on your jurisdiction and local rules of evidence.
+        </p>
+      </section>
+    </div>
+
+    <!-- FRENCH (CANADA) SUPPORT -->
+    <div data-lang="fr">
+      <section class="doc-section">
+        <h2>Bien démarrer : Gratuit vs ProofLog Pro</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Fonctionnalité</th>
+                <th>ProofLog Gratuit</th>
+                <th>ProofLog Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Consignation locale et modifications</strong></td>
+                <td>Entrées illimitées, photos, mémos vocaux et modifications en ajout uniquement avec AES-256-GCM + SHA-256/512 + signature Secure Enclave</td>
+                <td>Illimité</td>
+              </tr>
+              <tr>
+                <td><strong>Horodatages RFC 3161 en direct (DigiCert / FreeTSA / Sectigo)</strong></td>
+                <td><strong>5</strong> premières entrées scellées en direct; à partir de la 6e, scellement local en file <code>pending-tsa</code></td>
+                <td>Horodatages illimités + rattrapage automatique des entrées <code>pending-tsa</code></td>
+              </tr>
+              <tr>
+                <td><strong>PDF de cour</strong></td>
+                <td>Aperçu gratuit dans l'app avec filigrane</td>
+                <td>PDF d'affidavit sans filigrane (index chronologique, <code>Page X sur Y</code> et numérotation Bates)</td>
+              </tr>
+              <tr>
+                <td><strong>Exports ZIP de vérification et CSV</strong></td>
+                <td>Pro requis</td>
+                <td>Archive ZIP auto-vérifiable (originaux, jetons <code>.tsr</code>, certificats PEM, caviardage, <code>verify.html</code> et <code>verify.py</code> hors ligne) + CSV</td>
+              </tr>
+              <tr>
+                <td><strong>Importation en lot et OCR</strong></td>
+                <td>Pro requis</td>
+                <td>Courriels, CSV, tableurs XLSX, PDF et captures d'écran de conversations</td>
+              </tr>
+              <tr>
+                <td><strong>Sauvegarde et restauration chiffrées <code>.plbackup</code></strong></td>
+                <td>Gratuit pour toujours</td>
+                <td>Gratuit pour toujours</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Foire aux questions (FAQ)</h2>
+
+        <details class="faq-item" open>
+          <summary>Que signifie le statut « pending-tsa » et comment l'horodatage se met-il à jour?</summary>
+          <div class="faq-body">
+            Lorsqu'une entrée est enregistrée hors ligne ou après les 5 horodatages RFC 3161 gratuits, ProofLog la scelle tout de même localement avec la chaîne de hachage v8 complète et la signature matérielle, puis l'identifie comme <code>pending-tsa</code>. Dès que vous passez à ProofLog Pro (ou tirez vers le bas sur la Chronologie en ligne), ces entrées reçoivent automatiquement leur jeton d'horodatage.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment un avocat ou un tribunal peut-il vérifier un ZIP exporté hors ligne?</summary>
+          <div class="faq-body">
+            Décompressez simplement l'archive ZIP sur macOS, Windows ou Linux et ouvrez <code>verify.html</code> dans n'importe quel navigateur récent, ou exécutez <code>python3 verify.py</code> dans un terminal. Aucun accès Internet ni l'application ProofLog ne sont requis pour contrôler les condensats SHA-256/SHA-512, la continuité de la chaîne et les jetons RFC 3161 <code>.tsr</code>.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment sauvegarder ou transférer mon coffre vers un nouvel iPhone ou iPad?</summary>
+          <div class="faq-body">
+            Par sécurité, ProofLog ne synchronise rien avec un nuage tiers ni avec la sauvegarde iCloud de l'appareil. Allez dans <strong>Réglages &rarr; Ouvrir la sauvegarde et restauration chiffrées</strong>, choisissez une phrase secrète robuste et enregistrez le fichier <code>.plbackup</code> en lieu sûr. Sur votre nouvel appareil, importez ce fichier avec la même phrase secrète.
+            <br><br>
+            <strong>Important :</strong> Comme le développeur n'a aucun accès à vos clés, une phrase secrète oubliée ne peut pas être récupérée.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment fonctionne la protection par Face ID / Touch ID et l'icône discrète?</summary>
+          <div class="faq-body">
+            Activez <strong>Protéger la clé du coffre avec Face ID / Touch ID</strong> dans les Réglages pour exiger une authentification biométrique et effacer la clé de la mémoire vive dès que vous quittez l'application. Vous pouvez également activer <strong>Icône d'écran d'accueil discrète</strong> pour afficher une icône de bloc-notes neutre.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Comment restaurer un achat, annuler un abonnement ou demander un remboursement?</summary>
+          <div class="faq-body">
+            <ul>
+              <li><strong>Restaurer :</strong> Ouvrez ProofLog &rarr; <strong>Réglages &rarr; Restaurer les achats</strong> avec le même identifiant Apple.</li>
+              <li><strong>Gérer ou annuler :</strong> Utilisez <strong>Réglages &rarr; Gérer l'abonnement</strong> dans l'app ou ouvrez <strong>Réglages iOS &rarr; [Votre nom] &rarr; Abonnements</strong> (au moins 24 heures avant le renouvellement).</li>
+              <li><strong>Remboursements :</strong> Gérés directement par Apple via <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="doc-section">
+        <h2>Contacter le soutien technique</h2>
+        <p>Pour obtenir de l'aide ou signaler un bogue, veuillez créer un billet sur <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">github.com/zoomzou/prooflog/issues</a> en précisant votre modèle d'iPhone/iPad, la version d'iOS/iPadOS et les étapes pour reproduire le problème.</p>
+        <div class="callout callout-amber">
+          <strong>Avertissement :</strong> Les billets GitHub sont publics. N'y publiez jamais de preuves personnelles, captures d'écran confidentielles ni fichiers <code>.plbackup</code>.
+        </div>
+        <p class="lead" style="font-size:0.9rem;margin-top:14px;">
+          <strong>Avis juridique :</strong> ProofLog est un outil local de journalisation et de scellement cryptographique de preuves. Il ne fournit pas de conseils juridiques. La recevabilité devant un tribunal dépend de votre juridiction et des règles de preuve applicables.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>
+        <span data-lang="en">&copy; 2026 ProofLog · Technical Support</span>
+        <span data-lang="fr">&copy; 2026 ProofLog · Soutien technique</span>
+      </span>
+      <div class="footer-links">
+        <a href="./index.html">
+          <span data-lang="en">Overview</span>
+          <span data-lang="fr">Aperçu</span>
+        </a>
+        <a href="./privacy.html">
+          <span data-lang="en">Privacy Policy</span>
+          <span data-lang="fr">Confidentialité</span>
+        </a>
+        <a href="./terms.html">
+          <span data-lang="en">Terms</span>
+          <span data-lang="fr">Conditions</span>
+        </a>
+        <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">GitHub Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function syncButtons(mode) {
+      document.getElementById("btn-lang-en").classList.toggle("active", mode === "en");
+      document.getElementById("btn-lang-fr").classList.toggle("active", mode === "fr");
+    }
+    function setLang(mode) {
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+      try { localStorage.setItem("prooflog_doc_lang", mode); } catch (e) {}
+      syncButtons(mode);
+    }
+    syncButtons(document.documentElement.getAttribute("data-lang-mode") || "en");
+  </script>
+</body>
+</html>

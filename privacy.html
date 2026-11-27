@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — ProofLog</title>
+  <meta name="description" content="ProofLog Privacy Policy: zero-server local-only evidence vault, AES-256-GCM encryption, hash-only RFC 3161 timestamps, no tracking or data collection.">
+  <link rel="stylesheet" href="./styles.css">
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get("lang");
+      var saved = null;
+      try { saved = localStorage.getItem("prooflog_doc_lang"); } catch (e) {}
+      var mode = (q === "fr" || q === "en") ? q : (saved === "fr" ? "fr" : "en");
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html">
+        <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+          <rect width="36" height="36" rx="9" fill="#1B365D"/>
+          <path d="M18 7L27 10.6V17.4C27 23.1 23.2 27.9 18 29.5C12.8 27.9 9 23.1 9 17.4V10.6L18 7Z" stroke="#FFFFFF" stroke-width="1.8"/>
+          <path d="M14.2 18.2L16.9 20.9L22.2 15.2" stroke="#4ADE80" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ProofLog</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="./index.html">
+            <span data-lang="en">Overview</span>
+            <span data-lang="fr">Aperçu</span>
+          </a>
+          <a href="./privacy.html" aria-current="page">
+            <span data-lang="en">Privacy Policy</span>
+            <span data-lang="fr">Confidentialité</span>
+          </a>
+          <a href="./support.html">
+            <span data-lang="en">Support</span>
+            <span data-lang="fr">Assistance</span>
+          </a>
+          <a href="./terms.html">
+            <span data-lang="en">Terms</span>
+            <span data-lang="fr">Conditions</span>
+          </a>
+        </nav>
+
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" id="btn-lang-en" onclick="setLang('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-lang-fr" onclick="setLang('fr')">FR (CA)</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="hero-card">
+      <div class="eyebrow">
+        <span data-lang="en">App Store Privacy: Data Not Collected</span>
+        <span data-lang="fr">Confidentialité App Store : Aucune donnée collectée</span>
+      </div>
+      <h1 data-lang="en">ProofLog Privacy Policy</h1>
+      <h1 data-lang="fr">Politique de confidentialité de ProofLog</h1>
+      <p class="lead" data-lang="en">
+        ProofLog is engineered with a zero-server architecture. Your evidence, entries, photos, audio recordings, transcripts, and metadata stay strictly on your device and are never uploaded to developer servers.
+      </p>
+      <p class="lead" data-lang="fr">
+        ProofLog est conçu selon une architecture sans serveur. Vos preuves, entrées, photos, enregistrements audio, transcriptions et métadonnées demeurent exclusivement sur votre appareil et ne sont jamais téléversés vers des serveurs du développeur.
+      </p>
+      <div class="meta-row">
+        <span data-lang="en"><strong>Effective Date:</strong> November 27, 2026</span>
+        <span data-lang="fr"><strong>Date d'entrée en vigueur :</strong> 27 novembre 2026</span>
+        <span data-lang="en"><strong>Applies To:</strong> ProofLog (iOS &amp; iPadOS) and its Share, Widget, and Broadcast extensions</span>
+        <span data-lang="fr"><strong>Application :</strong> ProofLog (iOS et iPadOS) ainsi que ses extensions Partage, Widget et Diffusion</span>
+      </div>
+    </section>
+
+    <!-- ENGLISH POLICY -->
+    <div data-lang="en">
+      <section class="doc-section">
+        <h2>1. Zero-Server Architecture &amp; App Privacy Summary</h2>
+        <div class="callout callout-green">
+          <strong>Data Not Collected:</strong> ProofLog does not operate user accounts, cloud databases, advertising SDKs, analytics SDKs, telemetry, or crash-reporting trackers (<code>NSPrivacyTracking = false</code>). We have zero access to the contents of your vault.
+        </div>
+        <p>All record creation, cryptographic hashing (SHA-256 &amp; SHA-512), hardware signing, on-device speech transcription, OCR text extraction, PDF rendering, and Verification ZIP packaging happen locally on your iPhone or iPad.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>2. Local Encryption &amp; Key Storage</h2>
+        <ul>
+          <li><strong>On-Disk Encryption:</strong> Entries, attachments, proofs, and preferences stored in your vault are encrypted at rest using <code>AES-256-GCM</code>.</li>
+          <li><strong>Keychain &amp; Biometric Gate:</strong> Encryption and signing keys live inside your device's Apple iOS Keychain (and Secure Enclave where supported). You may optionally enable the <strong>Face ID / Touch ID Vault Key Gate</strong> in Settings so decryption keys require user-presence authentication and are cleared from memory when leaving the foreground.</li>
+          <li><strong>Excluded from iCloud Device Backup:</strong> Vault storage directories are explicitly marked excluded from automatic iCloud device backups to prevent unmonitored copies of sensitive evidence.</li>
+          <li><strong>App Extensions &amp; Shared Container:</strong> Content sent via the Share Extension or Screen Broadcast Extension is staged inside the app's private App Group container (<code>group.app.prooflog.vault</code>) until ingested and sealed in the main vault.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>3. Outbound Network Requests (Hash-Only RFC 3161 Timestamps)</h2>
+        <p>ProofLog never transmits personal notes, names, photos, audio, locations, or filenames over the network. The <strong>only</strong> network requests initiated by ProofLog are optional HTTPS (TLS 1.2+) queries to third-party RFC 3161 Timestamp Authorities (TSAs):</p>
+        <ul>
+          <li>Default providers: <strong>DigiCert</strong> (<code>timestamp.digicert.com</code>), <strong>FreeTSA</strong> (<code>freetsa.org/tsr</code>), and <strong>Sectigo</strong> (<code>timestamp.sectigo.com</code>), or a custom HTTPS TSA URL you explicitly configure in Settings.</li>
+          <li>Payload sent: Strictly a 32-byte irreversible SHA-256 cryptographic digest and a random cryptographic nonce—from which your text, images, or personal details cannot be reconstructed.</li>
+          <li>Like any standard HTTPS request on the internet, the receiving TSA server automatically observes standard network transport metadata (such as your IP address and timestamp of the HTTPS request) subject to that third party's network policies.</li>
+          <li>You can seal entries completely offline; any entry created offline or beyond the 5 free live timestamps is sealed locally and marked <code>pending-tsa</code> without sending network requests until you choose to sync under ProofLog Pro or disable/enable TSA providers.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>4. Device Permissions Used by ProofLog</h2>
+        <p>Each system permission is requested only when you invoke the corresponding feature and can be revoked anytime in iOS Settings:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Permission</th>
+                <th>Purpose in ProofLog</th>
+                <th>Leaves Device?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Camera</strong></td>
+                <td>Capture live timestamped photographs directly into your sealed vault.</td>
+                <td>No (stored encrypted on-device)</td>
+              </tr>
+              <tr>
+                <td><strong>Microphone</strong></td>
+                <td>Record timestamped voice memos inside the vault.</td>
+                <td>No (stored encrypted on-device)</td>
+              </tr>
+              <tr>
+                <td><strong>Speech Recognition</strong></td>
+                <td>Strictly <strong>on-device</strong> offline transcription (<code>supportsOnDeviceRecognition</code>) so voice memos are searchable.</td>
+                <td>No (processed offline on-device)</td>
+              </tr>
+              <tr>
+                <td><strong>Photo Library</strong></td>
+                <td>Import photos, screenshots, and Apple Reference Images into your vault.</td>
+                <td>No (stored encrypted on-device)</td>
+              </tr>
+              <tr>
+                <td><strong>Location (When In Use)</strong></td>
+                <td>Optionally stamp GPS/address coordinates onto an incident or handoff entry when you tap Location.</td>
+                <td>No (stored encrypted on-device)</td>
+              </tr>
+              <tr>
+                <td><strong>Face ID / Touch ID</strong></td>
+                <td>Protect and unlock access to your local Keychain vault master key.</td>
+                <td>No (handled by iOS Secure Enclave)</td>
+              </tr>
+              <tr>
+                <td><strong>Local Notifications</strong></td>
+                <td>Schedule on-device reminders for logging and encrypted backup checks.</td>
+                <td>No (local iOS notifications only)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>5. In-App Purchases &amp; Subscriptions</h2>
+        <p>Optional <strong>ProofLog Pro</strong> subscriptions (Annual and Monthly) are processed exclusively by Apple through <strong>StoreKit 2</strong> and your Apple ID App Store account. ProofLog never collects, processes, or stores your name, billing address, payment card details, or Apple receipt credentials.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>6. Exports &amp; Encrypted Backups</h2>
+        <p>When you export a Court PDF, Verification ZIP, CSV spreadsheet, or passphrase-encrypted <code>.plbackup</code> archive, ProofLog writes the file locally and hands it to the system iOS Share Sheet only upon your explicit action. Once you share or save an exported file to email, AirDrop, Files, iCloud Drive, or an attorney, you control that exported copy.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>7. Data Retention &amp; Right to Erasure (GDPR / CCPA / PIPEDA / Quebec Law 25)</h2>
+        <p>Because ProofLog holds zero data on developer servers, you retain total physical control over retention and deletion at all times:</p>
+        <ul>
+          <li>In-app permanent erasure: Go to <strong>Settings &rarr; Erase Local Vault &amp; Destroy Keys</strong> to cryptographically shred your Keychain master keys, signing keys, HPKE keys, encrypted records, attachments, and caches on this device.</li>
+          <li>Uninstalling ProofLog from your iPhone or iPad also removes its local app sandbox storage.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>8. Children's Privacy</h2>
+        <p>ProofLog is designed for adult record-keepers (such as parents, litigants, tenants, or employees documenting events). ProofLog does not knowingly collect personal information from children or anyone else on developer servers. Any names or details you log about children stay encrypted exclusively on your personal device.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>9. Changes &amp; Contact</h2>
+        <p>We may update this Privacy Policy to reflect app updates or legal requirements, updating the Effective Date above. For privacy questions or support inquiries, please open an issue at <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">github.com/zoomzou/prooflog/issues</a>.</p>
+        <div class="callout callout-amber">
+          <strong>Important Safety Reminder:</strong> Never post personal names, case files, screenshots, backups, or confidential evidence on public GitHub issues.
+        </div>
+      </section>
+    </div>
+
+    <!-- FRENCH (CANADA) POLICY -->
+    <div data-lang="fr">
+      <section class="doc-section">
+        <h2>1. Architecture sans serveur et résumé App Store</h2>
+        <div class="callout callout-green">
+          <strong>Aucune donnée collectée :</strong> ProofLog ne comporte aucun compte utilisateur, aucune base de données infonuagique et aucun SDK de publicité, d'analyse ou de suivi (<code>NSPrivacyTracking = false</code>). Le développeur n'a aucun accès au contenu de votre coffre.
+        </div>
+        <p>La création des entrées, le hachage cryptographique (SHA-256 et SHA-512), la signature matérielle, la transcription vocale sur l'appareil, la reconnaissance optique de caractères (OCR), la génération des PDF et la création des archives ZIP de vérification s'effectuent entièrement en local sur votre iPhone ou iPad.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>2. Chiffrement local et protection des clés</h2>
+        <ul>
+          <li><strong>Chiffrement sur disque :</strong> Toutes les entrées, pièces jointes, preuves cryptographiques et préférences sont chiffrées au repos avec <code>AES-256-GCM</code>.</li>
+          <li><strong>Trousseau Apple et protection biométrique :</strong> Les clés de chiffrement et de signature sont conservées dans le Trousseau iOS (et Secure Enclave lorsque pris en charge). Vous pouvez activer la protection par <strong>Face ID / Touch ID</strong> dans les Réglages afin d'effacer la clé de la mémoire dès que l'app quitte l'avant-plan.</li>
+          <li><strong>Exclusion de la sauvegarde iCloud :</strong> Le répertoire du coffre est marqué comme exclu des sauvegardes automatiques iCloud de l'appareil.</li>
+          <li><strong>Extensions d'application :</strong> Les éléments envoyés via l'extension de partage ou d'enregistrement d'écran transitent par le conteneur privé App Group (<code>group.app.prooflog.vault</code>) avant d'être chiffrés et scellés dans le coffre.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>3. Requêtes réseau sortantes (Horodatage RFC 3161 par hachage uniquement)</h2>
+        <p>ProofLog ne transmet jamais vos notes, noms, photos, enregistrements audio, coordonnées ou noms de fichiers sur Internet. Les <strong>seules</strong> requêtes réseau effectuées par l'app sont des requêtes HTTPS (TLS 1.2+) vers des autorités d'horodatage RFC 3161 (TSA) :</p>
+        <ul>
+          <li>Autorités par défaut : <strong>DigiCert</strong> (<code>timestamp.digicert.com</code>), <strong>FreeTSA</strong> (<code>freetsa.org/tsr</code>) et <strong>Sectigo</strong> (<code>timestamp.sectigo.com</code>), ou une URL TSA HTTPS personnalisée configurée par vous dans les Réglages.</li>
+          <li>Contenu transmis : Uniquement un condensat SHA-256 irréversible de 32 octets et un nonce aléatoire — impossibles à convertir en texte ou média d'origine.</li>
+          <li>Comme pour toute connexion HTTPS standard, le serveur de l'autorité TSA reçoit les métadonnées réseau de base (comme votre adresse IP et l'heure de la requête) selon sa propre politique.</li>
+          <li>Vous pouvez enregistrer des preuves hors ligne en tout temps : elles sont scellées localement avec le statut <code>pending-tsa</code> sans envoi réseau.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>4. Autorisations système utilisées</h2>
+        <p>Chaque autorisation n'est demandée qu'au moment où vous utilisez la fonction correspondante et reste révocable dans les Réglages iOS :</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Autorisation</th>
+                <th>Utilisation dans ProofLog</th>
+                <th>Quitte l'appareil?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Appareil photo</strong></td>
+                <td>Prendre des photos horodatées en direct directement dans votre coffre scellé.</td>
+                <td>Non (stockées chiffrées localement)</td>
+              </tr>
+              <tr>
+                <td><strong>Microphone</strong></td>
+                <td>Enregistrer des mémos vocaux horodatés dans le coffre.</td>
+                <td>Non (stockés chiffrés localement)</td>
+              </tr>
+              <tr>
+                <td><strong>Reconnaissance vocale</strong></td>
+                <td>Transcription hors ligne strictement <strong>sur l'appareil</strong> pour permettre la recherche dans vos mémos vocaux.</td>
+                <td>Non (traitement local hors ligne)</td>
+              </tr>
+              <tr>
+                <td><strong>Photothèque</strong></td>
+                <td>Importer des photos, captures d'écran et Apple Reference Images.</td>
+                <td>Non (stockées chiffrées localement)</td>
+              </tr>
+              <tr>
+                <td><strong>Localisation (Lors de l'utilisation)</strong></td>
+                <td>Ajouter de façon facultative votre position lorsqu'un incident est consigné.</td>
+                <td>Non (stockée chiffrée localement)</td>
+              </tr>
+              <tr>
+                <td><strong>Face ID / Touch ID</strong></td>
+                <td>Protéger l'accès à votre clé maîtresse locale dans le Trousseau.</td>
+                <td>Non (géré par Secure Enclave iOS)</td>
+              </tr>
+              <tr>
+                <td><strong>Notifications locales</strong></td>
+                <td>Rappels locaux de consignation et de sauvegarde chiffrée.</td>
+                <td>Non (notifications locales iOS)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>5. Achats intégrés et abonnements</h2>
+        <p>Les abonnements optionnels <strong>ProofLog Pro</strong> (Annuel et Mensuel) sont traités exclusivement par Apple via <strong>StoreKit 2</strong>. ProofLog ne reçoit ni vos informations de paiement, ni votre adresse de facturation, ni vos identifiants Apple.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>6. Exports et sauvegardes chiffrées</h2>
+        <p>Les PDF de cour, archives ZIP de vérification, fichiers CSV et sauvegardes chiffrées <code>.plbackup</code> sont générés localement et partagés uniquement lorsque vous utilisez la feuille de partage iOS. Vous demeurez maître des copies que vous choisissez de transmettre ou de sauvegarder hors de l'appareil.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>7. Conservation des données et droit à l'effacement (Loi 25 du Québec / LPRPDE / RGPD / CCPA)</h2>
+        <p>Puisqu'aucune donnée n'est stockée sur nos serveurs, vous contrôlez entièrement la conservation et la suppression :</p>
+        <ul>
+          <li>Effacement cryptographique intégré : Ouvrez <strong>Réglages &rarr; Effacer le coffre local et détruire les clés</strong> pour détruire définitivement vos clés du Trousseau, entrées, pièces jointes et caches sur cet appareil.</li>
+          <li>La désinstallation de l'app supprime également l'espace de stockage local de l'application.</li>
+        </ul>
+      </section>
+
+      <section class="doc-section">
+        <h2>8. Protection des renseignements des enfants</h2>
+        <p>ProofLog est destiné à des utilisateurs adultes tenant un journal personnel de preuves. Nous ne recueillons aucun renseignement personnel sur nos serveurs. Toute note mentionnant un enfant demeure chiffrée uniquement sur votre propre appareil.</p>
+      </section>
+
+      <section class="doc-section">
+        <h2>9. Modifications et contact</h2>
+        <p>Cette politique peut être mise à jour avec une nouvelle date d'entrée en vigueur. Pour toute question relative à la confidentialité, ouvrez un billet sur <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">github.com/zoomzou/prooflog/issues</a>.</p>
+        <div class="callout callout-amber">
+          <strong>Avertissement important :</strong> Ne publiez jamais de noms personnels, captures d'écran, dossiers judiciaires ou preuves confidentielles dans un billet public sur GitHub.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>
+        <span data-lang="en">&copy; 2026 ProofLog · Privacy Policy</span>
+        <span data-lang="fr">&copy; 2026 ProofLog · Politique de confidentialité</span>
+      </span>
+      <div class="footer-links">
+        <a href="./index.html">
+          <span data-lang="en">Overview</span>
+          <span data-lang="fr">Aperçu</span>
+        </a>
+        <a href="./support.html">
+          <span data-lang="en">Support</span>
+          <span data-lang="fr">Assistance</span>
+        </a>
+        <a href="./terms.html">
+          <span data-lang="en">Terms</span>
+          <span data-lang="fr">Conditions</span>
+        </a>
+        <a href="https://github.com/zoomzou/prooflog/issues" target="_blank" rel="noopener">GitHub Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function syncButtons(mode) {
+      document.getElementById("btn-lang-en").classList.toggle("active", mode === "en");
+      document.getElementById("btn-lang-fr").classList.toggle("active", mode === "fr");
+    }
+    function setLang(mode) {
+      document.documentElement.setAttribute("data-lang-mode", mode);
+      document.documentElement.lang = (mode === "fr") ? "fr-CA" : "en";
+      try { localStorage.setItem("prooflog_doc_lang", mode); } catch (e) {}
+      syncButtons(mode);
+    }
+    syncButtons(document.documentElement.getAttribute("data-lang-mode") || "en");
+  </script>
+</body>
+</html>
